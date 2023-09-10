@@ -15,12 +15,12 @@ telegram_chatid = 0
 
 print("Bot started...")
 
-# check if telegram credentials provided
+# check if telegram credentials are provided
 if not (telegram_token or telegram_chatid):
     telegram_enabled = False
     print("- Alert! No Telegram credentials were provided. Messages will only be printed in the prompt.")
 
-# check if chromedriver.exe is placed in project folder
+# check if chromedriver.exe is placed in the project folder
 if not os.path.isfile("chromedriver.exe"): 
     print("- Error! chromedriver.exe not found in project folder.")
     print("Quitting...")
@@ -32,7 +32,7 @@ vfs_website = driver.get("https://visa.vfsglobal.com/rus/ru/nld/login")
 
 print("Website successfully opened!")
 
-# sleep for 2 minutes so user can fill in credentials manually and proceed in the next page
+# sleep for 2 minutes so the user can fill in credentials manually and proceed to the next page
 sleep(120)
 
 # first round of inputs
@@ -56,7 +56,7 @@ while True:
 
     # spot error message
     try:
-        error_msg = driver.find_element(By.XPATH, "/html/body/app-root/div/app-eligibility-criteria/section/form/mat-card[1]/form/div[4]/div")
+        error_msg = driver.find_element(By.XPATH, "/html/body/app-root/div/div/app-eligibility-criteria/section/form/mat-card[1]/form/div[4]/div")
 
         if "Приносим извинения" in error_msg.text:                              # ---> this scenario means the error message box remains there unchanged
             print("No good news yet...")
@@ -99,7 +99,7 @@ while True:
         # send telegram message
         if telegram_enabled:
             url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
-            post_data = {"chat_id": telegram_chatid, "parse_mode": "Markdown", "text": "There may be some good news about the visa )"}
+            post_data = {"chat_id": telegram_chatid, "parse_mode": "Markdown", "text": "There may be some good news about the visa :)"}
             requests.post(url, data=post_data)
 
         break
