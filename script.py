@@ -44,6 +44,7 @@ while True:
     input("Log in manually and click 'Записаться на прием' in the following page.\nThen come back here and type ENTER: ")
     break
 
+sleep(1)
 print("Bot has started. See updates below.")
 
 # initial fill of field 'Выберите свой визовый центр'
@@ -98,7 +99,7 @@ while True:
         if "Приносим извинения" in error_msg.text: # means there are no slots available
 
             print("No available slots. Keep trying.")
-            no_updates_msg()
+            #no_updates_msg()
 
             # change selection in field 'Выберите свой визовый центр'
             driver.find_element(By.ID, "mat-select-value-1").click()            
