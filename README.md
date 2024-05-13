@@ -1,5 +1,5 @@
 # familyvisabot
-![familyvisabot]("icon.png")
+![familyvisabot]("https://github.com/hpdeandrade/familyvisabot/icon.png")
 
 Get notifications to your Telegram group via the Telegram bot about potential timeslots available in VFS Global Moscow. For other locations, the code must be adjusted. This bot written in Python language.
 
